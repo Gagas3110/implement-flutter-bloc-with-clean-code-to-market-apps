@@ -85,7 +85,7 @@ class _HomeBodyState extends State<HomeBody> {
           }
 
           if (state is HeadlinesFailedShow) {
-            throw state.msg;
+            context.failSnackbar(state.msg);
           }
         },
         child: BlocBuilder<HeadlinesBloc, HeadlinesState>(

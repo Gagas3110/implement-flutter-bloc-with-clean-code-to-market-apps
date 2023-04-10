@@ -88,6 +88,7 @@ class _ModContainState extends State<ModContain> {
             }
             if (state is LoginFailed) {
               context.failSnackbar(state.error!);
+              Navigator.pop(context);
             }
           },
         ),
@@ -123,13 +124,11 @@ class _ModContainState extends State<ModContain> {
                 CustomFormTextField(
                   hint: 'Username',
                   enabled: true,
-
                   controller: usernameCo,
                   maxLength: 30,
                   inputType: TextInputType.emailAddress,
-
-                  // validator: (value) =>
-                  //     isEmail(value!) ? null : 'Check ur email'
+                  validator: (value) =>
+                      (value!.isEmpty) ? "Silahkan isi username" : null,
                 ),
                 SizedBox(
                   height: context.deviceHeight(0.0125),
@@ -173,9 +172,8 @@ class _ModContainState extends State<ModContain> {
                         style: TextStyle(color: Colors.grey, fontSize: 12),
                         obscureText: obsecure,
                         controller: passwordCo,
-                        //validator: (value) =>
-                        //(value!.isEmpty) ? "Silahkan isi password" : null,
-                        //isEmail(value!) ? null : 'Check ur email',
+                        validator: (value) =>
+                            (value!.isEmpty) ? "Silahkan isi password" : null,
                       ),
                       //SizedBox(height: context.deviceHeight(0.058)),
                     ],
