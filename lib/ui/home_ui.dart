@@ -45,6 +45,7 @@ class _HomeBodyState extends State<HomeBody> {
   TopHeadlinesModels models = TopHeadlinesModels();
   TopHeadlinesModels articMod = TopHeadlinesModels();
   Login logs = Login();
+  String? image;
 
   @override
   void initState() {
@@ -58,7 +59,7 @@ class _HomeBodyState extends State<HomeBody> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: homeAppBar(context, logs.image ?? ''),
+      appBar: homeAppBar(context, image ?? ''),
       floatingActionButton: FloatingActionButton(
         child: Icon(
           Icons.close,
@@ -72,9 +73,12 @@ class _HomeBodyState extends State<HomeBody> {
       body: BlocListener<HeadlinesBloc, HeadlinesState>(
         listener: (context, state) async {
           if (state is SetupHeadlinesComplete) {
-            models = state.res;
-            articMod = state.rest;
-            logs = state.log;
+            setState(() {
+              models = state.res;
+              articMod = state.rest;
+              logs = state.log;
+              image = state.log.image;
+            });
           }
 
           if (state is HomeLogout) {
