@@ -46,32 +46,35 @@ class CardArticle extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      height: 14.h,
-                      width: 12.h,
-                      decoration: BoxDecoration(
-                        color: Colors.transparent,
-                        border:
-                            Border.all(color: Colors.grey.shade100, width: 2.0),
-                        borderRadius: BorderRadius.circular(13),
-                      ),
-                      child: Image.network(
-                        urlImage,
-                        fit: BoxFit.fill,
-                        height: double.infinity,
-                        width: double.infinity,
-                        errorBuilder: (BuildContext context, Object exception,
-                            StackTrace? stackTrace) {
-                          return Card(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10)),
-                            child: const SizedBox(
-                              height: 200,
-                              width: double.infinity,
-                              child: Icon(Icons.broken_image_outlined),
-                            ),
-                          );
-                        },
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(13),
+                      child: Container(
+                        height: 14.h,
+                        width: 12.h,
+                        decoration: BoxDecoration(
+                          color: Colors.transparent,
+                          border: Border.all(
+                              color: Colors.grey.shade100, width: 2.0),
+                          borderRadius: BorderRadius.circular(13),
+                        ),
+                        child: Image.network(
+                          urlImage,
+                          fit: BoxFit.fitHeight,
+                          height: double.infinity,
+                          width: double.infinity,
+                          errorBuilder: (BuildContext context, Object exception,
+                              StackTrace? stackTrace) {
+                            return Card(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(13)),
+                              child: const SizedBox(
+                                height: 200,
+                                width: double.infinity,
+                                child: Icon(Icons.broken_image_outlined),
+                              ),
+                            );
+                          },
+                        ),
                       ),
                     ),
                     SizedBox(width: 2.h),
