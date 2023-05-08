@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 import 'package:news_app/service/app_exception.dart';
 
 class NetworkUtil {
-  static NetworkUtil _instance = new NetworkUtil.internal();
+  static NetworkUtil _instance = NetworkUtil.internal();
   NetworkUtil.internal();
   factory NetworkUtil() => _instance;
   var dio = Dio();
