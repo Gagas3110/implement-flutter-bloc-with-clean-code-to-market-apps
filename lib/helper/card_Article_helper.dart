@@ -34,8 +34,8 @@ class CardArticle extends StatelessWidget {
           constraints: BoxConstraints(minHeight: 15.h),
           decoration: BoxDecoration(
             color: Colors.transparent,
-            border: Border.all(color: Colors.grey.shade100, width: 2.0),
-            borderRadius: BorderRadius.circular(13),
+            border: Border.all(color: Colors.grey.shade100, width: 0.4),
+            borderRadius: BorderRadius.circular(30),
           ),
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
@@ -54,8 +54,8 @@ class CardArticle extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: Colors.transparent,
                           border: Border.all(
-                              color: Colors.grey.shade100, width: 2.0),
-                          borderRadius: BorderRadius.circular(13),
+                              color: Colors.grey.shade100, width: 0.4),
+                          borderRadius: BorderRadius.circular(30),
                         ),
                         child: Image.network(
                           urlImage,
@@ -84,7 +84,8 @@ class CardArticle extends StatelessWidget {
                         Text(
                           source,
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, color: Colors.grey),
+                              fontWeight: FontWeight.normal,
+                              color: Colors.grey),
                         ),
                         SizedBox(height: 1.h),
                         SizedBox(
@@ -94,7 +95,7 @@ class CardArticle extends StatelessWidget {
                             maxLines: 3,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
-                                fontWeight: FontWeight.bold,
+                                fontWeight: FontWeight.normal,
                                 color: Colors.black,
                                 fontSize: 9.sp),
                           ),
@@ -107,14 +108,14 @@ class CardArticle extends StatelessWidget {
                             Text(
                               author,
                               style: TextStyle(
-                                  fontWeight: FontWeight.bold,
+                                  fontWeight: FontWeight.normal,
                                   color: Colors.grey),
                             ),
                             SizedBox(width: 2.h),
                             Text(
                               date,
                               style: TextStyle(
-                                  fontWeight: FontWeight.bold,
+                                  fontWeight: FontWeight.normal,
                                   color: Colors.grey),
                             ),
                           ],

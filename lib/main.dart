@@ -20,9 +20,9 @@ class MyApp extends StatelessWidget {
         title: 'NewsApp',
         debugShowCheckedModeBanner: false,
         navigatorKey: locator<NavigatorService>().navigatorKey,
-        theme: ThemeData(fontFamily: 'Inter'),
+        theme: ThemeData(fontFamily: 'Roboto'),
         //home: const HomeUi(),
-        home : FirstUi(),
+        home: LoginUi(),
         onGenerateRoute: (settings) => RouteGenerator.generateRoute(settings),
       );
     });

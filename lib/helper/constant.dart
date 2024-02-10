@@ -24,8 +24,14 @@ extension StringExtension on String {
 
 class ApiConstants {
   static const String Login = "login";
-  static const String TopHeadlines = "/top-headlines";
-  static const String Everything = '/everything';
+  static const String TopHeadlines = "top-headlines";
+  static const String Everything = 'everything';
+  static const String product = '/products';
+  static const String productCategory = '/category';
+  static const String jewelery = '/jewelery';
+  static const String electronics = '/electronics';
+  static const String mensClothing = "/men's clothing";
+  static const String womensClothing = "/women's clothing";
 }
 
 class ApiKeyConstants {

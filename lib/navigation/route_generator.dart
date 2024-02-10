@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:news_app/helper/constant.dart';
 import 'package:news_app/model/top_headlines_models.dart';
 import 'package:news_app/ui/first_ui.dart';
-
-import 'package:news_app/ui/home_ui.dart';
+import 'package:news_app/ui/home/home_provider/home_provider.dart';
 import 'package:news_app/ui/more_recommendation_ui.dart';
 import 'package:news_app/ui/web_view_ui.dart';
 

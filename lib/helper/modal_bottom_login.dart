@@ -4,10 +4,11 @@ import 'package:news_app/helper/custom_button.dart';
 import 'package:news_app/helper/custom_textfield.dart';
 import 'package:news_app/helper/extension.dart';
 import 'package:news_app/model/login.dart';
-import 'package:news_app/state_management/login/login_bloc.dart';
-import 'package:news_app/state_management/login/login_event.dart';
-import 'package:news_app/state_management/login/login_state.dart';
-import 'package:news_app/ui/home_ui.dart';
+import 'package:news_app/bloc/login/login_bloc.dart';
+import 'package:news_app/bloc/login/login_event.dart';
+import 'package:news_app/bloc/login/login_state.dart';
+import 'package:news_app/ui/home/home_provider/home_provider.dart';
+
 
 class NeedLogin extends StatefulWidget {
   final String? mode;

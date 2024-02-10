@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/helper/extension.dart';
 
-
 class SearchTextField extends StatefulWidget {
   final String? hint, label;
   final void Function(dynamic)? validator, onChanged, onAction;
@@ -46,22 +45,27 @@ class _SearchTextFieldState extends State<SearchTextField> {
       onChanged: widget.onChanged ?? (a) {},
       onTap: widget.onTap,
       style: TextStyle(
-          color: Colors.grey.shade800, fontSize: context.scaleFont(16)),
+          color: Colors.grey.shade800, fontSize: context.scaleFont(9)),
       decoration: InputDecoration(
         filled: true,
         enabled: widget.enabled ?? true,
-        fillColor: Colors.grey.shade100,
+        fillColor: Colors.transparent,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(4),
           borderSide: BorderSide.none,
         ),
         focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
-            borderSide: BorderSide(color: Colors.grey.shade400, width: 2)),
+            borderSide: BorderSide(color: Colors.transparent, width: 2)),
         hintText: widget.hint ?? '',
         hintStyle: TextStyle(fontSize: context.scaleFont(15)),
-        suffixIcon: Icon(
+        prefixIcon: Icon(
           widget.suffix ?? Icons.search,
+          color: Colors.black,
+          size: context.scaleFont(28),
+        ),
+        suffixIcon: Icon(
+          null,
           color: Colors.black,
           size: context.scaleFont(28),
         ),

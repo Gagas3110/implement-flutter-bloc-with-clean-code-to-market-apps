@@ -69,28 +69,36 @@ PreferredSize prefAppBar(BuildContext context, String text) {
           Size(double.infinity, MediaQuery.of(context).size.height * 0.12));
 }
 
-PreferredSize homeAppBar(BuildContext context, String url) {
+PreferredSize homeAppBar(String title, BuildContext context, String url) {
   return PreferredSize(
       child: SafeArea(
         child: Container(
-            padding: EdgeInsets.only(left: 15, bottom: 15, top: 15, right: 15),
+            padding: EdgeInsets.only(left: 22, bottom: 15, top: 15, right: 22),
             color: Colors.transparent,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Row(
                   children: [
-                    Text('Home',
+                    Text(title,
                         style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w300,
                             color: Colors.black)),
                     Spacer(),
-                    CircleAvatar(
-                      backgroundColor: Colors.transparent,
-                      radius: 25,
-                      backgroundImage: NetworkImage(url),
+
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(color: Colors.grey, width: 0.5)),
+                      child: Icon(Icons.notifications),
                     ),
+                    // CircleAvatar(
+                    //   backgroundColor: Colors.red.shade300.withOpacity(0.3),
+                    //   radius: 25,
+                    //   backgroundImage: NetworkImage(url),
+                    // ),
                   ],
                 ),
               ],
@@ -180,4 +188,58 @@ getFormatedDate(String dates) {
   DateTime date = DateTime.parse(dates);
   String formattedDate = DateFormat('dd-MMM-yyyy').format(date);
   return formattedDate;
+}
+
+
+class CustomSliverAppBar extends StatelessWidget {
+  const CustomSliverAppBar({
+    super.key,
+    required this.title,
+  });
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverAppBar(
+      backgroundColor: Colors.transparent,
+      floating: true,
+      pinned: true,
+      automaticallyImplyLeading: false, // untuk menyembunyikan tombol kembali
+      flexibleSpace: SafeArea(
+        child: Container(
+          padding: EdgeInsets.only(left: 22, bottom: 15, top: 15, right: 22),
+          color: Colors.transparent,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Row(
+                  children: [
+                    Text(title,
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w300,
+                            color: Colors.black)),
+                    Spacer(),
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(color: Colors.grey, width: 0.5)),
+                      child: Icon(Icons.notifications),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+      expandedHeight: MediaQuery.of(context).size.height * 0.1,
+      bottom: PreferredSize(
+        preferredSize: Size.fromHeight(0), // mengatur ukuran bottom menjadi nol
+        child: Container(), // kosongkan konten bottom
+      ),
+    );
+  }
 }

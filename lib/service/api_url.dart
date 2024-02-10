@@ -1,4 +1,5 @@
 class ApiUrl {
   final baseUrl = 'https://newsapi.org/v2/';
   final dummyUrl = 'https://dummyjson.com/auth/login';
+  final fakeStoreUrl = 'https://fakestoreapi.com';
 }
