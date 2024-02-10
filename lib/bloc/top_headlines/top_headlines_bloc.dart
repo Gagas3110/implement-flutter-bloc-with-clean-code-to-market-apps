@@ -3,8 +3,8 @@ import 'package:news_app/helper/shared_pref.dart';
 import 'package:news_app/model/login.dart';
 import 'package:news_app/model/top_headlines_models.dart';
 import 'package:news_app/service/rest_api.dart';
-import 'package:news_app/state_management/top_headlines/top_headlines_event.dart';
-import 'package:news_app/state_management/top_headlines/top_headlines_state.dart';
+import 'package:news_app/bloc/top_headlines/top_headlines_event.dart';
+import 'package:news_app/bloc/top_headlines/top_headlines_state.dart';
 
 class HeadlinesBloc extends Bloc<HeadlinesEvent, HeadlinesState> {
   TopHeadlinesModels result = TopHeadlinesModels();

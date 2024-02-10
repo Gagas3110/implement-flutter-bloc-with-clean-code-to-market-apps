@@ -2,8 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:news_app/helper/shared_pref.dart';
 import 'package:news_app/model/login.dart';
 import 'package:news_app/service/rest_api.dart';
-import 'package:news_app/state_management/login/login_event.dart';
-import 'package:news_app/state_management/login/login_state.dart';
+import 'package:news_app/bloc/login/login_event.dart';
+import 'package:news_app/bloc/login/login_state.dart';
 
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
