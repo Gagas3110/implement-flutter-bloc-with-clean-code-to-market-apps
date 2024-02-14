@@ -29,7 +29,6 @@ class HomeContainer extends StatelessWidget {
               child: Text(title),
             ),
             Container(
-              //height: 220,
               child: widget,
             ),
           ],
