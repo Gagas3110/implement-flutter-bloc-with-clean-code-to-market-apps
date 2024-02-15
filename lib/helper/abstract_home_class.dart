@@ -1,6 +1,6 @@
-import '../model/login.dart';
-import '../model/product_model.dart';
-import '../model/top_headlines_models.dart';
+import '../data/model/login.dart';
+import '../data/model/product_model.dart';
+import '../data/model/top_headlines_models.dart';
 
 abstract class AbstractHomeClass {
   List<ProductModel> jewelery = [];

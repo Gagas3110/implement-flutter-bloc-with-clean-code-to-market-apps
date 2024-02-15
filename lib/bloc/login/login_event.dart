@@ -1,7 +1,7 @@
 
 
 
-import 'package:news_app/model/login.dart';
+import 'package:news_app/data/model/login.dart';
 
 class LoginEvent {}
 

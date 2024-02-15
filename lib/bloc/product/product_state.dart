@@ -1,5 +1,5 @@
-import 'package:news_app/model/login.dart';
-import '../../model/product_model.dart';
+import 'package:news_app/data/model/login.dart';
+import '../../data/model/product_model.dart';
 
 class ProductState {}
 

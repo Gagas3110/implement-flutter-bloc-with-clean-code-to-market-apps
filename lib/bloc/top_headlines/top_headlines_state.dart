@@ -1,5 +1,5 @@
-import 'package:news_app/model/login.dart';
-import 'package:news_app/model/top_headlines_models.dart';
+import 'package:news_app/data/model/login.dart';
+import 'package:news_app/data/model/top_headlines_models.dart';
 
 class HeadlinesState {}
 

@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:sizer/sizer.dart';
-import '../../../model/product_model.dart';
+import '../../../data/model/product_model.dart';
 
 class ProductCard extends StatelessWidget {
   final ProductModel model;

@@ -5,7 +5,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:news_app/helper/card_Article_helper.dart';
 import 'package:news_app/helper/custom_AppBar.dart';
 import 'package:news_app/helper/search_textfield.dart';
-import 'package:news_app/model/top_headlines_models.dart';
+import 'package:news_app/data/model/top_headlines_models.dart';
 import 'package:sizer/sizer.dart';
 
 class MoreRecommendationUi extends StatefulWidget {

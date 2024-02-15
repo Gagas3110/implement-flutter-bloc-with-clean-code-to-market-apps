@@ -1,10 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/helper/constant.dart';
-import 'package:news_app/model/top_headlines_models.dart';
-import 'package:news_app/navigation/navigator_service.dart';
+import 'package:news_app/data/model/top_headlines_models.dart';
+import 'package:news_app/routes/navigator_service.dart';
 
-import '../../../navigation/locator.dart';
+import '../../../routes/locator.dart';
 
 class CarouselSliderNews extends StatelessWidget {
   const CarouselSliderNews({

@@ -1,4 +1,4 @@
-import 'package:news_app/model/top_headlines_models.dart';
+import 'package:news_app/data/model/top_headlines_models.dart';
 
 Articles article1 = Articles(
   source: Source(

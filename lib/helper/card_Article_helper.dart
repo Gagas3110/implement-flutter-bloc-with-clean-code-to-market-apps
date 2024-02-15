@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/helper/constant.dart';
-import 'package:news_app/navigation/locator.dart';
-import 'package:news_app/navigation/navigator_service.dart';
+import 'package:news_app/routes/locator.dart';
+import 'package:news_app/routes/navigator_service.dart';
 import 'package:sizer/sizer.dart';
 
 class CardArticle extends StatelessWidget {

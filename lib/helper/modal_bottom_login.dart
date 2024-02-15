@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/helper/custom_button.dart';
 import 'package:news_app/helper/custom_textfield.dart';
 import 'package:news_app/helper/extension.dart';
-import 'package:news_app/model/login.dart';
+import 'package:news_app/data/model/login.dart';
 import 'package:news_app/bloc/login/login_bloc.dart';
 import 'package:news_app/bloc/login/login_event.dart';
 import 'package:news_app/bloc/login/login_state.dart';

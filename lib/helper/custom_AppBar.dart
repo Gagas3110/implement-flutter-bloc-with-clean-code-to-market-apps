@@ -237,8 +237,8 @@ class CustomSliverAppBar extends StatelessWidget {
       ),
       expandedHeight: MediaQuery.of(context).size.height * 0.1,
       bottom: PreferredSize(
-        preferredSize: Size.fromHeight(0), // mengatur ukuran bottom menjadi nol
-        child: Container(), // kosongkan konten bottom
+        preferredSize: Size.fromHeight(0), 
+        child: Container(), 
       ),
     );
   }

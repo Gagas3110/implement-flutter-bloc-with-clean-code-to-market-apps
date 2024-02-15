@@ -1,13 +1,13 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:news_app/helper/constant.dart';
 import 'package:news_app/helper/shared_pref.dart';
-import 'package:news_app/model/login.dart';
-import 'package:news_app/service/rest_api.dart';
+import 'package:news_app/data/model/login.dart';
+import 'package:news_app/repository/product/product_repo_impl.dart';
+import '../../service/api_endpoints.dart';
 import 'product_event.dart';
 import 'product_state.dart';
 
 class ProductBloc extends Bloc<ProductEvent, ProductState> {
-  RestApi api = RestApi();
+  final api = ProductRepoImpl();
   SharedDB db = SharedDB();
   Login? log;
 
@@ -17,10 +17,12 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         log = await db.getUser();
         emit(SetupProductProgress());
         if (event is SetupProductEvent) {
-          var jewelry = await getData(ApiConstants.jewelery);
-          var electronics = await getData(ApiConstants.electronics);
-          var mensClothing = await getData(ApiConstants.mensClothing);
-          var womansClothing = await getData(ApiConstants.womensClothing);
+          var jewelry = await api.getDataProduct(ApiEndPoints.jewelery);
+          var electronics = await api.getDataProduct(ApiEndPoints.electronics);
+          var mensClothing =
+              await api.getDataProduct(ApiEndPoints.mensClothing);
+          var womansClothing =
+              await api.getDataProduct(ApiEndPoints.womensClothing);
           emit(SetupProductComplete(
               mensClothing: mensClothing,
               womansClothing: womansClothing,
@@ -36,11 +38,5 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         emit(ProductFailedShow(e.toString()));
       }
     });
-  }
-
-  getData(String param) async {
-    var res;
-    res = await api.getProduct(param);
-    return res;
   }
 }

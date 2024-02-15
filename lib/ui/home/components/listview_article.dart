@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:news_app/helper/card_Article_helper.dart';
 import 'package:news_app/helper/constant.dart';
 import 'package:news_app/helper/custom_AppBar.dart';
-import 'package:news_app/model/top_headlines_models.dart';
-import 'package:news_app/navigation/locator.dart';
-import 'package:news_app/navigation/navigator_service.dart';
+import 'package:news_app/data/model/top_headlines_models.dart';
+import 'package:news_app/routes/locator.dart';
+import 'package:news_app/routes/navigator_service.dart';
 
 class ListViewArticle extends StatelessWidget {
   const ListViewArticle({

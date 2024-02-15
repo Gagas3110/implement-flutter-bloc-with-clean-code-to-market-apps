@@ -1,6 +1,6 @@
 import 'package:intl/intl.dart';
 import 'package:news_app/helper/constant.dart';
-import 'package:news_app/model/login.dart';
+import 'package:news_app/data/model/login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:async';
 
