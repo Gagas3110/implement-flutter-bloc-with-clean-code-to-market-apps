@@ -18,11 +18,9 @@ class HeadlinesBloc extends Bloc<HeadlinesEvent, HeadlinesState> {
         if (event is SetupHeadlinesEvent) {
           var result = await api.getAllDataHeadline();
           var model = await api.getAllDataArticle();
-
           emit(SetupHeadlinesComplete(result, model, log!));
         } else if (event is DoLogout) {
           emit(LogoutLoading());
-
           await db.dbClear();
           emit(HomeLogout());
         }

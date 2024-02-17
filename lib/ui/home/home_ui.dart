@@ -86,8 +86,11 @@ class _HomeBodyState extends State<HomeBody> implements AbstractHomeClass {
             if (state is SetupHeadlinesComplete) {
               setState(() {
                 newsModel = state.res;
+                print(newsModel);
                 articMod = state.rest;
+                print(articMod);
                 listArticle = articMod!.articles!;
+                print(listArticle);
               });
             }
           },
@@ -138,27 +141,27 @@ class _HomeBodyState extends State<HomeBody> implements AbstractHomeClass {
                       HomeContainer(
                         widget: Container(
                           child: ListView.builder(
-                              shrinkWrap: true,
-                              physics: NeverScrollableScrollPhysics(),
-                              itemCount: listArticle.length > 3
-                                  ? 4
-                                  : listArticle.length,
-                              itemBuilder: (context, index) {
-                                return AnimationConfiguration.staggeredList(
-                                  position: index,
-                                  duration: const Duration(milliseconds: 375),
-                                  child: SlideAnimation(
-                                    verticalOffset: 30.0,
-                                    child: FadeInAnimation(
-                                      child: ListViewArticle(
-                                          listArticle: listArticle,
-                                          articMod: articMod,
-                                          context: context,
-                                          index: index),
-                                    ),
+                            shrinkWrap: true,
+                            physics: NeverScrollableScrollPhysics(),
+                            itemCount:
+                                listArticle.length > 3 ? 4 : listArticle.length,
+                            itemBuilder: (context, index) {
+                              return AnimationConfiguration.staggeredList(
+                                position: index,
+                                duration: const Duration(milliseconds: 375),
+                                child: SlideAnimation(
+                                  verticalOffset: 30.0,
+                                  child: FadeInAnimation(
+                                    child: ListViewArticle(
+                                        listArticle: listArticle,
+                                        articMod: articMod,
+                                        context: context,
+                                        index: index),
                                   ),
-                                );
-                              }),
+                                ),
+                              );
+                            },
+                          ),
                         ),
                         title: 'News Article',
                       ),

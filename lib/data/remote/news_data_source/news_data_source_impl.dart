@@ -8,12 +8,13 @@ class NewsDataSourceImpl extends BaseApiService implements NewsDataSource {
   NetworkUtil net = NetworkUtil();
 
   Future<TopHeadlinesModels> getHeadlines() async {
-    return await _fetchData(ApiEndPoints.TopHeadlines);
+    return await _fetchData(ApiEndPoints.TopHeadlines,
+        queryParam: {'country': codeRegion, 'apiKey': apiKey});
   }
 
   Future<TopHeadlinesModels> getArticle() async {
     return await _fetchData(ApiEndPoints.Everything,
-        queryParam: {'q': 'keyword'});
+        queryParam: {'q': 'keyword', 'apiKey': apiKey});
   }
 
   Future<TopHeadlinesModels> _fetchData(String endPoint,
