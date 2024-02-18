@@ -8,6 +8,9 @@ class HomeBody extends StatefulWidget {
 }
 
 class _HomeBodyState extends State<HomeBody> implements AbstractHomeClass {
+  late ScrollController _scrollController;
+  bool lastStatus = true;
+  double height = 390;
   @override
   List<ProductModel> electronics = [];
 
@@ -51,9 +54,30 @@ class _HomeBodyState extends State<HomeBody> implements AbstractHomeClass {
 
   @override
   TopHeadlinesModels get mockData => topHeadlinesModel;
+
+  bool get _isShrink {
+    return _scrollController.hasClients &&
+        _scrollController.offset > (height - kToolbarHeight);
+  }
+
+  void _scrollListener() {
+    if (_isShrink != lastStatus) {
+      setState(() {
+        lastStatus = _isShrink;
+      });
+    }
+  }
+
   @override
   void initState() {
+    _scrollController = ScrollController()..addListener(_scrollListener);
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
   }
 
   bloc(dynamic event) {
@@ -104,11 +128,35 @@ class _HomeBodyState extends State<HomeBody> implements AbstractHomeClass {
             );
           } else {
             return CustomScrollView(
+              controller: _scrollController,
               physics: BouncingScrollPhysics(),
               slivers: [
                 CustomSliverAppBar(
                   title: 'Home',
                 ),
+                // SliverAppBar(
+                //   leading: const BackButton(),
+                //   // leading: _isShrink ? const BackButton() : null,
+                //   pinned: true,
+                //   floating: true,
+                //   backgroundColor: Colors.white,
+                //   expandedHeight: height,
+                //   flexibleSpace: FlexibleSpaceBar(
+                //     title: _isShrink
+                //         ? const Text('pmatatias Statistic',
+                //             style: TextStyle(fontSize: 16))
+                //         : const SizedBox(),
+                //     // background: TabButtonRow(
+                //     //   current: current,
+                //     //   items: items,
+                //     //   onTap: (index) {
+                //     //     setState(() {
+                //     //       current = index;
+                //     //     });
+                //     //   },
+                //     // ),
+                //   ),
+                // ),
                 SliverList(
                   delegate: SliverChildListDelegate(
                     [

@@ -77,7 +77,7 @@ class _FirstUiState extends State<FirstUi> {
                 size: 15.h,
               ),
               SizedBox(
-                height: 19.h,
+                height: 5.h,
               ),
               Text(
                 'Find all about \n Hot News',
