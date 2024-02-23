@@ -1,17 +1,14 @@
-class LoginState {}
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class IsLoginState extends LoginState {}
+part 'login_state.freezed.dart';
 
-class NotLoginState extends LoginState {}
-
-class InitState extends LoginState {}
-
-class LoginInProgress extends LoginState {}
-
-class LoginSuccess extends LoginState {}
-
-class LoginFailed extends LoginState {
-  final String? error;
-
-  LoginFailed({this.error});
+@freezed
+abstract class LoginState with _$LoginState {
+  const factory LoginState.isLoginState() = IsLoginState;
+  const factory LoginState.notLoginState() = NotLoginState;
+  const factory LoginState.initState() = InitState;
+  const factory LoginState.loginInProgress() = LoginInProgress;
+  const factory LoginState.loginSuccess() = LoginSuccess;
+  const factory LoginState.loginFailed({String? error}) = LoginFailed;
 }
+

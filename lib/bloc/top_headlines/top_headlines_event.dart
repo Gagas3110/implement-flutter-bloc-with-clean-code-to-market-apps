@@ -1,13 +1,11 @@
-class HeadlinesEvent {}
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class SetupHeadlinesEvent extends HeadlinesEvent {}
+part 'top_headlines_event.freezed.dart';
 
-class SetupArticleEvent extends HeadlinesEvent {}
-
-class HeadlinesLoadMore extends HeadlinesEvent {
-  final int paging;
-
-  HeadlinesLoadMore(this.paging);
+@freezed
+abstract class HeadlinesEvent with _$HeadlinesEvent {
+  const factory HeadlinesEvent.setupHeadlinesEvent() = SetupHeadlinesEvent;
+  const factory HeadlinesEvent.setupArticleEvent() = SetupArticleEvent;
+  const factory HeadlinesEvent.headlinesLoadMore(int paging) = HeadlinesLoadMore;
+  const factory HeadlinesEvent.doLogout() = DoLogout;
 }
-
-class DoLogout extends HeadlinesEvent {}

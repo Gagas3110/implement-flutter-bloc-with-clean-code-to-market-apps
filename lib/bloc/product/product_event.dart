@@ -1,11 +1,10 @@
-class ProductEvent {}
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class SetupProductEvent extends ProductEvent {}
+part 'product_event.freezed.dart';
 
-class ProductLoadMore extends ProductEvent {
-  final int paging;
-
-  ProductLoadMore(this.paging);
+@freezed
+abstract class ProductEvent with _$ProductEvent {
+  const factory ProductEvent.setupProductEvent() = SetupProductEvent;
+  const factory ProductEvent.productLoadMore(int paging) = ProductLoadMore;
+  const factory ProductEvent.doLogout() = DoLogout;
 }
-
-class DoLogout extends ProductEvent {}

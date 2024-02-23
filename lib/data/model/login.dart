@@ -1,20 +1,34 @@
-class LoginReq {
-  String? username;
-  String? password;
+import 'package:freezed_annotation/freezed_annotation.dart';
+part 'login.freezed.dart';
+part 'login.g.dart';
+// @freezed
+// class LoginReq {
+//   String? username;
+//   String? password;
 
-  LoginReq({this.username, this.password});
+//   LoginReq({this.username, this.password});
 
-  LoginReq.fromJson(Map<String, dynamic> json) {
-    username = json['username'];
-    password = json['password'];
-  }
+//   LoginReq.fromJson(Map<String, dynamic> json) {
+//     username = json['username'];
+//     password = json['password'];
+//   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['username'] = this.username;
-    data['password'] = this.password;
-    return data;
-  }
+//   Map<String, dynamic> toJson() {
+//     final Map<String, dynamic> data = new Map<String, dynamic>();
+//     data['username'] = this.username;
+//     data['password'] = this.password;
+//     return data;
+//   }
+// }
+@freezed
+class LoginReq with _$LoginReq {
+  factory LoginReq({
+    required String username,
+    required String password,
+  }) = _LoginReq;
+
+  factory LoginReq.fromJson(Map<String, dynamic> json) =>
+      _$LoginReqFromJson(json);
 }
 
 class Login {

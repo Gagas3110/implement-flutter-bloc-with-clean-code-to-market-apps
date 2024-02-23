@@ -10,20 +10,32 @@ class HeadlinesBloc extends Bloc<HeadlinesEvent, HeadlinesState> {
   SharedDB db = SharedDB();
   Login? log;
   final api = NewsRepoImp();
+
   HeadlinesBloc() : super(HeadlinesInitial()) {
     on<HeadlinesEvent>((event, emit) async {
       try {
         log = await db.getUser();
         emit(SetupHeadlinesProgress());
-        if (event is SetupHeadlinesEvent) {
-          var result = await api.getAllDataHeadline();
-          var model = await api.getAllDataArticle();
-          emit(SetupHeadlinesComplete(result, model, log!));
-        } else if (event is DoLogout) {
-          emit(LogoutLoading());
-          await db.dbClear();
-          emit(HomeLogout());
-        }
+        event.when(
+          setupHeadlinesEvent: () async {
+            var result = await api.getAllDataHeadline();
+            var model = await api.getAllDataArticle();
+            emit(
+              SetupHeadlinesComplete(
+                res: result,
+                rest: model,
+                log: log!,
+              ),
+            );
+          },
+          doLogout: () async {
+            emit(LogoutLoading());
+            await db.dbClear();
+            emit(HomeLogout());
+          },
+          headlinesLoadMore: (int paging) {},
+          setupArticleEvent: () {},
+        );
       } catch (e) {
         emit(HeadlinesFailedShow(e.toString()));
       }

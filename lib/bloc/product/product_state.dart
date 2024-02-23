@@ -1,33 +1,21 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:news_app/data/model/login.dart';
-import '../../data/model/product_model.dart';
+import 'package:news_app/data/model/product_model.dart';
 
-class ProductState {}
+part 'product_state.freezed.dart';
 
-class ProductInitial extends ProductState {}
-
-class SetupProductProgress extends ProductState {}
-
-class SetupProductComplete extends ProductState {
-  final List<ProductModel> jewelry;
-  final List<ProductModel> electronics;
-  final List<ProductModel> mensClothing;
-  final List<ProductModel> womansClothing;
-  final Login log;
-
-  SetupProductComplete(
-      {required this.mensClothing,
-      required this.womansClothing,
-      required this.log,
-      required this.jewelry,
-      required this.electronics});
+@freezed
+abstract class ProductState with _$ProductState {
+  const factory ProductState.productInitial() = ProductInitial;
+  const factory ProductState.setupProductProgress() = SetupProductProgress;
+  const factory ProductState.setupProductComplete({
+    required List<ProductModel> jewelry,
+    required List<ProductModel> electronics,
+    required List<ProductModel> mensClothing,
+    required List<ProductModel> womansClothing,
+    required Login log,
+  }) = SetupProductComplete;
+  const factory ProductState.productFailedShow(String msg) = ProductFailedShow;
+  const factory ProductState.logoutLoading() = LogoutLoading;
+  const factory ProductState.homeLogout() = HomeLogout;
 }
-
-class ProductFailedShow extends ProductState {
-  String msg;
-
-  ProductFailedShow(this.msg);
-}
-
-class LogoutLoading extends ProductState {}
-
-class HomeLogout extends ProductState {}

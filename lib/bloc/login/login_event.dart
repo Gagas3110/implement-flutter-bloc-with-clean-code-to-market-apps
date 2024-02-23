@@ -1,15 +1,10 @@
-
-
-
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:news_app/data/model/login.dart';
 
-class LoginEvent {}
+part 'login_event.freezed.dart';
 
-class LoginSubmitted extends LoginEvent {
-  final LoginReq body;
-  
-
-  LoginSubmitted(this.body);
+@freezed
+abstract class LoginEvent with _$LoginEvent {
+  const factory LoginEvent.loginSubmitted(LoginReq body) = LoginSubmitted;
+  const factory LoginEvent.checkLogin() = CheckLogin;
 }
-
-class CheckLogin extends LoginEvent {}

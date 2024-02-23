@@ -22,6 +22,22 @@
               android:name="io.flutter.embedding.android.NormalTheme"
               android:resource="@style/NormalTheme"
               />
+            <intent-filter android:autoVerify="true">
+               <action android:name="android.intent.action.VIEW" />
+               <category android:name="android.intent.category.DEFAULT" />
+               <category android:name="android.intent.category.BROWSABLE" />
+               <data android:scheme="https" />
+               <data android:host="yourDomain.com" /> 
+               <!-- exact path value must be "/login/" -->
+               <data android:path="/login/" />  
+               <!-- path must start with "/product/" and then it can contain any number of characters; in this case, it would probably be a product ID. -->
+               <data android:pathPattern="/product/.*" />
+               <!-- path must start with /account/, so it may be /account/confirm, /account/verify etc. -->
+               <data android:pathPrefix="/account/" />
+            </intent-filter>
+            <meta-data
+              android:name="flutter_depplinking_enabled"
+              android:value="true"/>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
