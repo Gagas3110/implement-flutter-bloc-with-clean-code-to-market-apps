@@ -16,7 +16,7 @@ class HeadlinesBloc extends Bloc<HeadlinesEvent, HeadlinesState> {
       try {
         log = await db.getUser();
         emit(SetupHeadlinesProgress());
-        event.when(
+        await event.when(
           setupHeadlinesEvent: () async {
             var result = await api.getAllDataHeadline();
             var model = await api.getAllDataArticle();

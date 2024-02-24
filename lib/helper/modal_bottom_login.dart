@@ -8,6 +8,8 @@ import 'package:news_app/bloc/login/login_event.dart';
 import 'package:news_app/bloc/login/login_state.dart';
 import 'package:news_app/ui/home/home_provider/home_provider.dart';
 
+import '../data/model/login.dart';
+
 class NeedLogin extends StatefulWidget {
   final String? mode;
   const NeedLogin({super.key, this.mode});
@@ -226,10 +228,10 @@ class _ModContainState extends State<ModContain> {
             onTap: () {
               if (key.currentState!.validate()) {
                 if (widget.mode == 'SIGNIN') {
-                  var body;
-                  body.username = usernameCo.text;
-                  body.password = passwordCo.text;
-
+                  LoginReq body = LoginReq(
+                    username: usernameCo.text,
+                    password: passwordCo.text,
+                  );
                   bloc(LoginSubmitted(body));
                 } else {
                   null;

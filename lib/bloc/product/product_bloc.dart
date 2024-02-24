@@ -16,12 +16,15 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       try {
         log = await db.getUser();
         emit(SetupProductProgress());
-        event.when(
+        await event.when(
           setupProductEvent: () async {
             var jewelry = await api.getDataProduct(ApiEndPoints.jewelery);
-            var electronics = await api.getDataProduct(ApiEndPoints.electronics);
-            var mensClothing = await api.getDataProduct(ApiEndPoints.mensClothing);
-            var womansClothing = await api.getDataProduct(ApiEndPoints.womensClothing);
+            var electronics =
+                await api.getDataProduct(ApiEndPoints.electronics);
+            var mensClothing =
+                await api.getDataProduct(ApiEndPoints.mensClothing);
+            var womansClothing =
+                await api.getDataProduct(ApiEndPoints.womensClothing);
             emit(SetupProductComplete(
               mensClothing: mensClothing,
               womansClothing: womansClothing,
@@ -34,7 +37,8 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
             emit(LogoutLoading());
             await db.dbClear();
             emit(HomeLogout());
-          }, productLoadMore: (int paging) {  },
+          },
+          productLoadMore: (int paging) {},
         );
       } catch (e) {
         emit(ProductFailedShow(e.toString()));
