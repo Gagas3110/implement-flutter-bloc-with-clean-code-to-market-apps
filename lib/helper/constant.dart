@@ -12,6 +12,11 @@ class Constant extends InheritedWidget {
   static const String FIRST_SCREEN = "FIRST_SCREEN";
   static const String MENU_ALL_RECOMMENDATION = "MENU_ALL_RECOMMENDATION";
 
+  //Text Constant
+  static const String HOT_NEWS = 'hot News';
+  static const String HOME = 'Home';
+  static const String NEWS_ARTICLE = 'News Article';
+
   @override
   bool updateShouldNotify(Constant oldWidget) => false;
 }

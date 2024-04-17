@@ -35,14 +35,14 @@ class FirstUi extends StatefulWidget {
 }
 
 class _FirstUiState extends State<FirstUi> {
-  bloc(dynamic event) {
-    BlocProvider.of<LoginBloc>(context).add(event);
-  }
-
   @override
   void initState() {
     bloc(CheckLogin());
     super.initState();
+  }
+
+  bloc(dynamic event) {
+    BlocProvider.of<LoginBloc>(context).add(event);
   }
 
   @override

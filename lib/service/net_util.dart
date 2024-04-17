@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_null_comparison, unnecessary_type_check
+// ignore_for_file: unnecessary_null_comparison, unnecessary_type_check, deprecated_member_use
 
 import 'dart:async';
 import 'dart:convert';

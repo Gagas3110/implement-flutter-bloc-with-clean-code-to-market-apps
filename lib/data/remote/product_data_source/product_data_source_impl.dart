@@ -3,6 +3,7 @@ import 'package:news_app/service/api_endpoints.dart';
 import 'package:news_app/service/base_api_service.dart';
 import 'package:news_app/service/net_util.dart';
 
+import '../../../helper/app_config.dart';
 import 'product_data_source.dart';
 
 class ProductDataSourceImpl extends BaseApiService
@@ -12,7 +13,7 @@ class ProductDataSourceImpl extends BaseApiService
   Future<List<ProductModel>> getProduct(String param) async {
     try {
       final response = await net.getDio(
-        fakeStoreUrl +
+        AppConfig.shared.fakeStoreUrl +
             ApiEndPoints.product +
             ApiEndPoints.productCategory +
             param,

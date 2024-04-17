@@ -25,33 +25,25 @@ class _WebViewUiState extends State<WebViewUi> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: prefAppBar(context, 'News'),
-      body: Container(
-        height: 100.h,
-        width: 100.w,
-        child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Container(
-            constraints: BoxConstraints(
-                maxWidth: MediaQuery.of(context).size.width * 1.5,
-                maxHeight: MediaQuery.of(context).size.height * 7.0),
-            child: InAppWebView(
-              initialUrlRequest: URLRequest(
-                url: Uri.parse(widget.headUrl!),
-              ),
-              initialOptions: InAppWebViewGroupOptions(
-                crossPlatform: InAppWebViewOptions(
-                  mediaPlaybackRequiresUserGesture: false,
-                ),
-              ),
-              androidOnPermissionRequest: (InAppWebViewController controller,
-                  String origin, List<String> resources) async {
-                return PermissionRequestResponse(
-                    resources: resources,
-                    action: PermissionRequestResponseAction.GRANT);
-              },
+      body: Stack(
+        children: [
+          InAppWebView(
+            initialUrlRequest: URLRequest(
+              url: Uri.parse(widget.headUrl!),
             ),
+            initialOptions: InAppWebViewGroupOptions(
+              crossPlatform: InAppWebViewOptions(
+                mediaPlaybackRequiresUserGesture: false,
+              ),
+            ),
+            androidOnPermissionRequest: (InAppWebViewController controller,
+                String origin, List<String> resources) async {
+              return PermissionRequestResponse(
+                  resources: resources,
+                  action: PermissionRequestResponseAction.GRANT);
+            },
           ),
-        ),
+        ],
       ),
     );
   }

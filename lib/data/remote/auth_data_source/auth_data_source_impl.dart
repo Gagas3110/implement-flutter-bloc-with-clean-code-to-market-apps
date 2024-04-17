@@ -5,12 +5,14 @@ import 'package:news_app/data/remote/auth_data_source/auth_data_source.dart';
 import 'package:news_app/service/base_api_service.dart';
 import 'package:news_app/service/net_util.dart';
 
+import '../../../helper/app_config.dart';
+
 class AuthDataSourceImpl extends BaseApiService implements AuthDataSource {
   NetworkUtil net = NetworkUtil();
 
   Future<Login> login(Map<String, dynamic> body) async {
     try {
-      final response = await net.postDio(dummyUrl,
+      final response = await net.postDio(AppConfig.shared.dummyUrl,
           headers: _headers,
           body: body,
           encoding: Encoding.getByName('utf-8'),

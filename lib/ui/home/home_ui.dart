@@ -9,8 +9,8 @@ class HomeBody extends StatefulWidget {
 
 class _HomeBodyState extends State<HomeBody> implements AbstractHomeClass {
   late ScrollController _scrollController;
-  bool lastStatus = true;
-  double height = 390;
+  bool isShownData = true;
+  ProductBloc bloc = ProductBloc();
   @override
   List<ProductModel> electronics = [];
 
@@ -57,14 +57,12 @@ class _HomeBodyState extends State<HomeBody> implements AbstractHomeClass {
 
   bool get _isShrink {
     return _scrollController.hasClients &&
-        _scrollController.offset > (height - kToolbarHeight);
+        _scrollController.offset > (bloc.height - kToolbarHeight);
   }
 
   void _scrollListener() {
-    if (_isShrink != lastStatus) {
-      setState(() {
-        lastStatus = _isShrink;
-      });
+    if (_isShrink != bloc.lastStatus) {
+      bloc.lastStatus = _isShrink;
     }
   }
 
@@ -80,7 +78,7 @@ class _HomeBodyState extends State<HomeBody> implements AbstractHomeClass {
     super.dispose();
   }
 
-  bloc(dynamic event) {
+  blocFunc(dynamic event) {
     BlocProvider.of<ProductBloc>(context).add(event);
   }
 
@@ -91,14 +89,12 @@ class _HomeBodyState extends State<HomeBody> implements AbstractHomeClass {
         BlocListener<ProductBloc, ProductState>(
           listener: (context, state) async {
             if (state is SetupProductComplete) {
-              setState(() {
-                jewelery = state.jewelry;
-                electronics = state.electronics;
-                mensClothing = state.mensClothing;
-                womansClothing = state.womansClothing;
-                logs = state.log;
-                image = state.log.image;
-              });
+              jewelery = state.jewelry;
+              electronics = state.electronics;
+              mensClothing = state.mensClothing;
+              womansClothing = state.womansClothing;
+              logs = state.log;
+              image = state.log.image;
             }
             if (state is ProductFailedShow) {
               context.failSnackbar(state.msg);
@@ -108,14 +104,19 @@ class _HomeBodyState extends State<HomeBody> implements AbstractHomeClass {
         BlocListener<HeadlinesBloc, HeadlinesState>(
           listener: (context, state) {
             if (state is SetupHeadlinesComplete) {
-              setState(() {
-                newsModel = state.res;
-                print(newsModel);
-                articMod = state.rest;
-                print(articMod);
-                listArticle = articMod!.articles!;
-                print(listArticle);
-              });
+              newsModel = state.res;
+              print(newsModel);
+              articMod = state.rest;
+              print(articMod);
+              listArticle = articMod!.articles!;
+              print(listArticle);
+            }
+          },
+        ),
+        BlocListener<FlagsmithBloc, FlagsmithState>(
+          listener: (context, state) {
+            if (state is FlagsmithGetData) {
+              isShownData = state.isShowData;
             }
           },
         ),
@@ -132,7 +133,7 @@ class _HomeBodyState extends State<HomeBody> implements AbstractHomeClass {
               physics: BouncingScrollPhysics(),
               slivers: [
                 CustomSliverAppBar(
-                  title: 'Home',
+                  title: Constant.HOME,
                 ),
                 // SliverAppBar(
                 //   leading: const BackButton(),
@@ -183,35 +184,39 @@ class _HomeBodyState extends State<HomeBody> implements AbstractHomeClass {
                         widget: CarouselSliderNews(
                           models: newsModel ?? mockData,
                         ),
-                        title: 'Hot News',
+                        title: Constant.HOT_NEWS.capitalize(),
                       ),
                       SizedBox(height: 20),
-                      HomeContainer(
-                        widget: Container(
-                          child: ListView.builder(
-                            shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
-                            itemCount:
-                                listArticle.length > 3 ? 4 : listArticle.length,
-                            itemBuilder: (context, index) {
-                              return AnimationConfiguration.staggeredList(
-                                position: index,
-                                duration: const Duration(milliseconds: 375),
-                                child: SlideAnimation(
-                                  verticalOffset: 30.0,
-                                  child: FadeInAnimation(
-                                    child: ListViewArticle(
-                                        listArticle: listArticle,
-                                        articMod: articMod,
-                                        context: context,
-                                        index: index),
+                      Visibility(
+                        visible: isShownData,
+                        child: HomeContainer(
+                          widget: Container(
+                            child: ListView.builder(
+                              shrinkWrap: true,
+                              physics: NeverScrollableScrollPhysics(),
+                              itemCount: listArticle.length > 3
+                                  ? 4
+                                  : listArticle.length,
+                              itemBuilder: (context, index) {
+                                return AnimationConfiguration.staggeredList(
+                                  position: index,
+                                  duration: bloc.duration,
+                                  child: SlideAnimation(
+                                    verticalOffset: 30.0,
+                                    child: FadeInAnimation(
+                                      child: ListViewArticle(
+                                          listArticle: listArticle,
+                                          articMod: articMod,
+                                          context: context,
+                                          index: index),
+                                    ),
                                   ),
-                                ),
-                              );
-                            },
+                                );
+                              },
+                            ),
                           ),
+                          title: Constant.NEWS_ARTICLE,
                         ),
-                        title: 'News Article',
                       ),
                     ],
                   ),

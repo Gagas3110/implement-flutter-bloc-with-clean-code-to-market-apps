@@ -10,7 +10,9 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
   final api = ProductRepoImpl();
   final SharedDB db = SharedDB();
   Login? log;
-
+  bool lastStatus = true;
+  double height = 390;
+  final duration = const Duration(milliseconds: 375);
   ProductBloc() : super(ProductInitial()) {
     on<ProductEvent>((event, emit) async {
       try {
