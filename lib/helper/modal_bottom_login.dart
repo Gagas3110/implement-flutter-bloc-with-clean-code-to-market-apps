@@ -1,3 +1,4 @@
+import 'package:dynatrace_flutter_plugin/dynatrace_flutter_plugin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/helper/custom_button.dart';
@@ -89,6 +90,8 @@ class _ModContainState extends State<ModContain> {
             }
             if (state is LoginFailed) {
               context.failSnackbar(state.error!);
+              Dynatrace()
+                  .reportCrash('FormatException', 'Login Error', state.error!);
               Navigator.pop(context);
             }
           },
@@ -103,8 +106,6 @@ class _ModContainState extends State<ModContain> {
             padding: EdgeInsets.only(top: 5, bottom: 5, right: 16, left: 16),
             height: context.deviceHeight(0.4),
             child: SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              physics: BouncingScrollPhysics(),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.start,

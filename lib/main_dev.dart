@@ -10,10 +10,13 @@ import 'package:sizer/sizer.dart';
 import 'bloc/flagsmith/flagsmith_bloc.dart';
 import 'bloc/flagsmith/flagsmith_event.dart';
 import 'helper/app_config.dart';
+import 'package:dynatrace_flutter_plugin/dynatrace_flutter_plugin.dart';
 
 void main() {
   setupLocator();
   initializeApp();
+  FlagsmithBloc? bloc;
+  bloc!.state;
 }
 
 void initializeApp() async {
@@ -28,9 +31,18 @@ void initializeApp() async {
       primaryColor: Colors.yellow,
       flavor: Flavor.dev,
     );
-    runApp(NewsAppDev());
-  } catch (e) {
+    runZonedGuarded<Future<void>>(() async {
+      Dynatrace().applyUserPrivacyOptions(
+          UserPrivacyOptions(DataCollectionLevel.UserBehavior, true));
+      Dynatrace().applyUserPrivacyOptions(
+          UserPrivacyOptions(DataCollectionLevel.Off, false));
+      Dynatrace().start(NewsAppDev());
+    }, Dynatrace().reportZoneStacktrace);
+  } catch (e, stackTrace) {
     print('Error initializing Flagsmith: $e');
+    print(stackTrace.toString());
+    Dynatrace().reportCrash(
+        'FormatException', 'Flagsmith Error', stackTrace.toString());
   }
 }
 
