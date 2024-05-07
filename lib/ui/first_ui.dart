@@ -1,3 +1,4 @@
+import 'package:dynatrace_flutter_plugin/dynatrace_flutter_plugin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/helper/custom_button.dart';
@@ -9,6 +10,9 @@ import 'package:news_app/ui/home/home_provider/home_provider.dart';
 import 'package:sizer/sizer.dart';
 
 import '../bloc/login/login_state.dart';
+import '../helper/constant.dart';
+import '../routes/locator.dart';
+import '../routes/navigator_service.dart';
 
 class LoginUi extends StatefulWidget {
   const LoginUi({super.key});
@@ -54,10 +58,7 @@ class _FirstUiState extends State<FirstUi> {
       body: BlocListener<LoginBloc, LoginState>(
         listener: (context, state) {
           if (state is IsLoginState) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const HomeUi()),
-            );
+            locator<NavigatorService>().navigateTo(Constant.MENU_HOME);
           }
 
           if (state is LoginFailed) {

@@ -536,6 +536,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.6.2"
+  logger:
+    dependency: "direct main"
+    description:
+      name: logger
+      sha256: "8c94b8c219e7e50194efc8771cd0e9f10807d8d3e219af473d89b06cc2ee4e04"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.0"
   logging:
     dependency: transitive
     description:
@@ -592,14 +600,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.2"
-  opentelemetry_sls:
+  opentelemetry:
     dependency: "direct main"
     description:
-      name: opentelemetry_sls
-      sha256: f8d8e96af42897a5155baabdb91d014d209db4f2a283ffe8adf8d803820ba7a0
+      name: opentelemetry
+      sha256: b2b88a55558368c54d4b6ff73613ed46db714e011c6012ebf8158e2e2bc83d5b
       url: "https://pub.dev"
     source: hosted
-    version: "0.15.1"
+    version: "0.18.2"
   package_config:
     dependency: transitive
     description:
@@ -708,10 +716,10 @@ packages:
     dependency: transitive
     description:
       name: protobuf
-      sha256: "01dd9bd0fa02548bf2ceee13545d4a0ec6046459d847b6b061d8a27237108a08"
+      sha256: "68645b24e0716782e58948f8467fd42a880f255096a821f9e7d0ec625b00c84d"
       url: "https://pub.dev"
     source: hosted
-    version: "2.1.0"
+    version: "3.1.0"
   provider:
     dependency: transitive
     description:
@@ -1030,5 +1038,5 @@ packages:
     source: hosted
     version: "3.1.2"
 sdks:
-  dart: ">=2.19.0 <3.0.0"
+  dart: ">=2.19.0 <4.0.0"
   flutter: ">=3.7.0"

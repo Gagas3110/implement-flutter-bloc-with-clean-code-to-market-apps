@@ -6,8 +6,8 @@ dynatrace {
       configurations {
         defaultConfig {
           autoStart{
-            applicationId '7d025ca0-1278-46db-bb65-9818364162b3'
-            beaconUrl 'https://bf94780lys.bf.dynatrace.com/mbeacon'
+            applicationId 'bfcc9a94-6d5e-4af2-b031-4380107bd4da'
+            beaconUrl 'https://bf03065cwi.bf.dynatrace.com/mbeacon'
           }
           userOptIn true
           agentBehavior.startupLoadBalancing true

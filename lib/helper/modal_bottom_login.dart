@@ -10,6 +10,9 @@ import 'package:news_app/bloc/login/login_state.dart';
 import 'package:news_app/ui/home/home_provider/home_provider.dart';
 
 import '../data/model/login.dart';
+import '../routes/locator.dart';
+import '../routes/navigator_service.dart';
+import 'constant.dart';
 
 class NeedLogin extends StatefulWidget {
   final String? mode;
@@ -76,22 +79,24 @@ class _ModContainState extends State<ModContain> {
         BlocListener<LoginBloc, LoginState>(
           listener: (context, state) async {
             if (state is IsLoginState) {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const HomeUi()),
-              );
+              locator<NavigatorService>().navigateTo(Constant.MENU_HOME);
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => const HomeUi()),
+              // );
             }
             if (state is LoginSuccess) {
               context.succesSnackBar('Berhasil Login');
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const HomeUi()),
-              );
+              locator<NavigatorService>().navigateTo(Constant.MENU_HOME);
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => const HomeUi()),
+              // );
             }
             if (state is LoginFailed) {
               context.failSnackbar(state.error!);
-              Dynatrace()
-                  .reportCrash('FormatException', 'Login Error', state.error!);
+              // Dynatrace()
+              //     .reportCrash('FormatException', 'Login Error', state.error!);
               Navigator.pop(context);
             }
           },

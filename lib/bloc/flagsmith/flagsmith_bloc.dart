@@ -23,6 +23,7 @@ class FlagsmithBloc extends Bloc<FlagsmithEvent, FlagsmithState> {
             var flagDataSource =
                 FlagSmithDataSourceImpl(flagsmithClient, featureFlags);
             final repo = FlagSmithRepoImp(flagDataSource: flagDataSource);
+            await repo.fetchFeatureFlags(flagsmithClient);
             final isShown = await repo.isShownItem();
             emit(FlagsmithGetData(isShowData: isShown));
           }

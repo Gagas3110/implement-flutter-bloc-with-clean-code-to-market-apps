@@ -5,4 +5,7 @@ GetIt locator = GetIt.asNewInstance();
 
 void setupLocator() {
   locator.registerLazySingleton(() => NavigatorService());
+  locator.registerLazySingleton(() => DynatraceNavigationObserver());
 }
+
+

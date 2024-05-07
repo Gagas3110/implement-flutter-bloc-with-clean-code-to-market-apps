@@ -13,7 +13,7 @@ class RouteGenerator {
       case Constant.MENU_HOME:
         return MaterialPageRoute(builder: (_) => HomeUi());
 
-         case Constant.FIRST_SCREEN:
+      case Constant.FIRST_SCREEN:
         return MaterialPageRoute(builder: (_) => FirstUi());
 
       case Constant.MENU_DETAIL:
